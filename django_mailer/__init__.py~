@@ -130,8 +130,6 @@ def queue_email_message(email_message, fail_silently=False, priority=None):
                 queued_message = models.QueuedMessage(message=message)
                 if priority:
                     queued_message.priority = priority
-                if hold_email:
-                    queued_message.hold = True
                 queued_message.save()
                 result = send_queued_message(queued_message, smtp_connection=connection, blacklist=blacklist, log=True)
             return (result == constants.RESULT_SENT)

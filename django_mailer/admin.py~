@@ -42,7 +42,7 @@ class QueuedMessage(MessageRelatedModelAdmin):
     not_deferred.admin_order_field = 'deferred'
 
     list_display = ('id', 'message__to_address', 'message__subject', 'message__from_address',
-                    'message__date_created', 'priority', 'not_deferred','hold')
+                    'message__date_created', 'priority', 'not_deferred')
     list_filter = ('message__from_address',)
 
 class Blacklist(admin.ModelAdmin):

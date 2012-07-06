@@ -24,6 +24,9 @@ LOCK_PATH = settings.LOCK_PATH or os.path.join(tempfile.gettempdir(),
 
 logger = logging.getLogger('django_mailer.engine')
 
+def retry_deferred():
+    queue = models.QueuedMessage.objects.all()
+
 def _message_queue(block_size):
     """
     A generator which iterates queued messages in blocks so that new
